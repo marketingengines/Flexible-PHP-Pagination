@@ -64,8 +64,8 @@ And does not belong to me. All credit for the design goes to this author.<br />
 <?php
 include('config.php');
 
-$max = 6;
-$select = "SELECT * FROM test";
+$max = 4;
+$select = "SELECT * FROM keywords";
 $query1 = mysql_query($select) or die( mysql_error() ); 
 $total = mysql_num_rows($query1);
 
@@ -74,7 +74,7 @@ $nav = new Pagination($max, $total);
 $query2 = mysql_query($select." LIMIT ".$nav->start().",".$max) or die(mysql_error()); 
 while($item = mysql_fetch_object($query2)) 
 { 
-    echo $item->id . ' - <b>' . $item->name . '</b><br />';
+    echo $item->id . ' - <b>' . $item->keyword . '</b><br />';
 }
 
 $link = 'customdesign.php?p=';
@@ -88,3 +88,6 @@ echo $nav->next('<a href="'.$link.'{nr}">Next &raquo;</a>') . $nav->last('<a hre
 $nav->info('<br /><div id="embed"><span class="active_tnt_link">Result {start} to {end} of {total}</span>') . $nav->info('<span class="active_tnt_link">Page {page} of {pages}</span></div>');
 
 echo '</div>';
+
+
+
